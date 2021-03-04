@@ -1,8 +1,6 @@
-import Vue from 'vue'
-import App from './App.vue'
+import ReactDOM from 'react-dom';
+import React from 'react'
 
-Vue.config.productionTip = false
+import APP from "./app";
 
-new Vue({
-  render: function (h) { return h(App) },
-}).$mount('#app')
+ReactDOM.render(<APP />, document.getElementById('app'))

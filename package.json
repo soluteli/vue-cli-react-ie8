@@ -7,10 +7,13 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.6.11"
+    "react": ">16",
+    "react-dom": ">16"
   },
   "devDependencies": {
+    "@umijs/babel-preset-umi": "^3.3.8",
     "@vue/cli-service": "~4.5.0",
+    "vue-cli-plugin-kaihua-react": "0.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
