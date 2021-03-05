@@ -1,0 +1,18 @@
+<% allPagesPath.forEach(function (i) { %>
+import * as <%= i.pageVar %> from '<%= i.file  %>'
+<% }); %>
+
+const routerData = [
+<% allPagesVars.forEach(function (i) { %>
+  {
+    title: '<%= i.title %>',
+    pages: [
+      <% i.vars.forEach(function (_i) {%>
+        <%= _i %>,
+      <% }) %>
+    ]
+  },
+<% }); %>
+]
+
+export default routerData

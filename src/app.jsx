@@ -2,6 +2,8 @@ import React from 'react'
 import './style.css'
 import Logo from './assets/logo.svg'
 
+import './router'
+
 function APP() {
   return <div>
     <img alt="React logo" src={Logo}></img>
