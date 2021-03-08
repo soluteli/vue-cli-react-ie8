@@ -1,6 +1,4 @@
-// import './react-ie8-pollyfill'
-import 'core-js'
-import 'console-polyfill'
+import './react-ie8-pollyfill'
 import ReactDOM from 'react-dom';
 import React from 'react'
 
