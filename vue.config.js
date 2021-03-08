@@ -1,7 +1,6 @@
 module.exports = {
   // https://cli.vuejs.org/zh/guide/webpack.html#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C-%E9%AB%98%E7%BA%A7
   async chainWebpack(config) {
-    console.log("chainWebpack");
     // config
     //   .optimization
     //   .minimizer('terser')
@@ -10,6 +9,8 @@ module.exports = {
     //     args[0].terserOptions.ie8 = true
     //     return args
     //   })
+    // config.entry('ie8-pollyfill')
+    //   .add(path.join(process.cwd(), 'src', 'react-ie8-pollyfill.js'));
     config.optimization.minimizers.delete("terser");
     config.optimization.delete("splitChunks");
     config.optimization
@@ -39,5 +40,15 @@ module.exports = {
         .end()
       .use('babel-loader')
         .loader(require.resolve('babel-loader'))
+   
+    // config.plugin('debug')
+    //   .use(path.resolve('./myWebpackDebugPlugin.js'))
+
+    // config.plugins.clear()
+    // config.plugins.delete('html')
+    // config.plugins.delete('preload')
+    // config.plugins.delete('prefetch')
+    
+    console.log("chainWebpack", config.toConfig());
   }
 };

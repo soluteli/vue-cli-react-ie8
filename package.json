@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-service": "^4.5.11",
     "es3ify-loader": "^0.2.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-cli-plugin-kaihua-react": "0.0.2",
