@@ -11,6 +11,7 @@ module.exports = {
     //   })
     // config.entry('ie8-pollyfill')
     //   .add(path.join(process.cwd(), 'src', 'react-ie8-pollyfill.js'));
+    
     config.optimization.minimizers.delete("terser");
     config.optimization.delete("splitChunks");
     config.optimization
@@ -32,12 +33,17 @@ module.exports = {
       ]);
 
     // config.module.rule('js').exclude.clear()
-    config.module.rule('js').uses.delete('babel-loader')
+    // config.module.rule('js').uses.delete('babel-loader')
+
+    config.module.rules.delete('js')
       
-    config.module.rule('js')
-      .use('es3-loader')
-        .loader(require.resolve('es3ify-loader'))
-        .end()
+    config.module.rule('jsx')
+      .test(/jsx?$/)
+      // .exclude.add(/core-js/)
+    config.module.rule('jsx')
+      // .use('es3-loader')
+      //   .loader(require.resolve('es3ify-loader'))
+      //   .end()
       .use('babel-loader')
         .loader(require.resolve('babel-loader'))
    
@@ -49,6 +55,6 @@ module.exports = {
     // config.plugins.delete('preload')
     // config.plugins.delete('prefetch')
     
-    console.log("chainWebpack", config.toConfig());
+    // console.log("chainWebpack", JSON.stringify(config.toConfig(), null, 2));
   }
 };
