@@ -9,3 +9,6 @@ presets: [  "@babel/preset-env",
   }],
 }
 ```
+
+## jsRule
+不能复用原来的 babel-loader
