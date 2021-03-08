@@ -41,9 +41,9 @@ module.exports = {
       .test(/jsx?$/)
       // .exclude.add(/core-js/)
     config.module.rule('jsx')
-      // .use('es3-loader')
-      //   .loader(require.resolve('es3ify-loader'))
-      //   .end()
+      .use('es3-loader')
+        .loader(require.resolve('es3ify-loader'))
+        .end()
       .use('babel-loader')
         .loader(require.resolve('babel-loader'))
    
