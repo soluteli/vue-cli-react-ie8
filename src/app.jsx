@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './app.css'
 import Logo from './assets/logo.svg'
 import APPRouter from './router'
 
