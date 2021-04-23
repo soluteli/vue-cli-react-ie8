@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "antd": "^1.x",
+    "babel-plugin-import": "^1.13.3",
     "console-polyfill": "^0.3.0",
     "core-js": "^3.9.1",
     "es5-shim": "^4.5.15",
