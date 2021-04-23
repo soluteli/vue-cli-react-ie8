@@ -1,8 +1,3 @@
-require('@babel/register')({
-  presets: ['@babel/preset-env', '@babel/preset-react']
-})
-
-
 const util = require('util');
 const path = require('path')
 const rimraf = require('rimraf')
@@ -113,7 +108,10 @@ async function compile (sourceDir, distDir) {
   })
 
   console.log({allPagesPath, allPagesVars})
+  return {allPagesPath, allPagesVars}
 }
 
-compile(source_componentsDir,tmp_componentsDir )
+export default function (params) {
+  return compile(source_componentsDir, tmp_componentsDir)
+}
 

@@ -1,4 +1,4 @@
-const data = {allPagesPath:
+/* const data = {allPagesPath:
   [ { pageVar: 'v0',
       file:
        '/Users/soluteli/coding/servyou/servyou-kpi/cli/servyou-chase-ui/components/a-tree/index.example.jsx' },
@@ -28,18 +28,29 @@ const data = {allPagesPath:
           ],
         },
       ]
-}
+} */
 
-const path= require('path')
+require('@babel/register')({
+  presets: ['@babel/preset-env', '@babel/preset-react']
+})
+require("regenerator-runtime/runtime");
+
+const path = require('path')
 const fsPromises = require('fs').promises
 const fsExtra = require('fs-extra')
 const ejs = require('ejs')
+const compile = require('./compile-babel').default
 
-const templateFilePath = path.join(process.cwd(), 'template', 'routerData.ejs')
+const templateFilePath = path.join(process.cwd(), 'template', 'routerData.ejs');
 
-ejs.renderFile(templateFilePath, {...data}, async function (err, _data) {
-  console.log(data)
-  // await fsExtra.ensureFile('.tmp/routerData.js')
-  await fsPromises.writeFile('.tmp/routerData.js', _data)
-  console.log('success')
-})
+
+(async function () {
+  const data = await compile()
+
+  ejs.renderFile(templateFilePath, {...data}, async function (err, _data) {
+    console.log(data)
+    await fsExtra.ensureFile('.tmp/routerData.js')
+    await fsPromises.writeFile(path.join(process.cwd(), '.tmp/routerData.js'), _data)
+    console.log('success')
+  })
+})()
