@@ -1,28 +1,33 @@
-const data = {
-  allPagesPath: [
-    {
-      pageVar: "v0",
-      file: "/Users/soluteli/Desktop/servyou-chase-ui/components/button/index.example.jsx",
-    },
-    {
-      pageVar: "v1",
-      file: "/Users/soluteli/Desktop/servyou-chase-ui/components/input/index.example.jsx",
-    },
-  ],
-  allPagesVars: [
-    {
-      title: "按钮",
-      vars: [
-        "v0",
-      ],
-    },
-    {
-      title: "输入框",
-      vars: [
-        "v1",
-      ],
-    },
-  ],
+const data = {allPagesPath:
+  [ { pageVar: 'v0',
+      file:
+       '/Users/soluteli/coding/servyou/servyou-kpi/cli/servyou-chase-ui/components/a-tree/index.example.jsx' },
+    { pageVar: 'v1',
+      file:
+       '/Users/soluteli/coding/servyou/servyou-kpi/cli/servyou-chase-ui/components/button/index.example.jsx' },
+    { pageVar: 'v2',
+      file:
+       '/Users/soluteli/coding/servyou/servyou-kpi/cli/servyou-chase-ui/components/input/index.example.jsx' } ],
+       allPagesVars: [
+        {
+          title: "tree",
+          vars: [
+            "v0",
+          ],
+        },
+        {
+          title: "按钮",
+          vars: [
+            "v1",
+          ],
+        },
+        {
+          title: "输入框",
+          vars: [
+            "v2",
+          ],
+        },
+      ]
 }
 
 const path= require('path')

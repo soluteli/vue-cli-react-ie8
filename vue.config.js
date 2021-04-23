@@ -1,4 +1,7 @@
+const path = require('path')
 module.exports = {
+  publicPath: './',
+  // transpileDependencies: [/react/, /react-router/],
   // https://cli.vuejs.org/zh/guide/webpack.html#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C-%E9%AB%98%E7%BA%A7
   async chainWebpack(config) {
     // config
@@ -11,6 +14,14 @@ module.exports = {
     //   })
     // config.entry('ie8-pollyfill')
     //   .add(path.join(process.cwd(), 'src', 'react-ie8-pollyfill.js'));
+
+    // config.externals([
+    //   {
+    //     'react': "React",
+    //     'react-dom': "ReactDOM",
+    //   }
+    // ])
+
     
     config.optimization.minimizers.delete("terser");
     config.optimization.delete("splitChunks");
@@ -56,5 +67,37 @@ module.exports = {
     // config.plugins.delete('prefetch')
     
     // console.log("chainWebpack", JSON.stringify(config.toConfig(), null, 2));
+
+    /* config.optimization.splitChunks({
+      cacheGroups: {
+        vendors: {
+          name: `chunk-vendors`,
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          chunks: 'initial'
+        },
+        common: {
+          name: `chunk-common`,
+          minChunks: 2,
+          priority: -20,
+          chunks: 'initial',
+          reuseExistingChunk: true
+        },
+        // 'react-ie8-pollyfill': {  //拆分指定文件
+        //   test: /(src\/react\-ie8\-pollyfill(\.js)?)$/,
+        //   name: 'react-ie8-pollyfill',
+        //   chunks: 'initial',
+        //   priority: 1
+        // }
+      }
+    }) */
+
+    /* config.plugin('html')
+      .tap(args => {
+        args[0].chunksSortMode = 'manual',
+        args[0].chunks = ['ie8-pollyfill']
+        args[0].chunks = ['ie8-pollyfill', 'chunk-vendors', 'app']
+        return args
+      }) */
   }
 };

@@ -1,3 +1,8 @@
+require('@babel/register')({
+  presets: ['@babel/preset-env', '@babel/preset-react']
+})
+
+
 const util = require('util');
 const path = require('path')
 const rimraf = require('rimraf')
@@ -9,6 +14,7 @@ const fsExtra = require('fs-extra')
 const execAsync = util.promisify(exec);
 const rimrafAsync = util.promisify(rimraf);
 const transformFileAsync = util.promisify(require('@babel/core').transformFile)
+
 
 const source_componentsDir = 'components'
 const tmp_componentsDir = '.tmp'
@@ -32,8 +38,18 @@ async function compileWithcli () {
 
 async function _transpileFile (sourceFile, targetFile) {
   const result = await transformFileAsync(sourceFile, {
-    presets: ['@babel/preset-react'],
-    plugins: ['@babel/plugin-transform-modules-commonjs'],
+    presets: [
+      [
+        "@babel/preset-env",
+        {
+          useBuiltIns: false,
+          // corejs: '3',
+          "modules": "commonjs"
+        },
+      ],
+      '@babel/preset-react'
+    ],
+    // plugins: ['@babel/plugin-transform-modules-commonjs'],
     configFile: false
   })
   await fsExtra.ensureFile(targetFile)
@@ -46,14 +62,15 @@ async function compile (sourceDir, distDir) {
   const sourceFiles = await globby(`./${sourceDir}/**/*.js?(x)`)
   const filesData = sourceFiles.map(s => ({
     source: s,
-    target: path.join(process.cwd(), s.replace(/^\./, `${distDir}`).replace(/jsx$/, 'js')),
+    target: s
+    // target: path.join(process.cwd(), s.replace(/^\./, `${distDir}`).replace(/jsx$/, 'js')),
   }))
   /* map async */
-  await Promise.all(filesData.map(({source, target}) => _transpileFile(source, target)))
+  // await Promise.all(filesData.map(({source, target}) => _transpileFile(source, target)))
 
   const examplesData = {}
   for (const {source, target} of filesData) {
-    if (target.endsWith('example.js')) {
+    if (target.endsWith('example.jsx')) {
 
       const isExist = fs.existsSync(target)
       // const isAccess = fs.accessSync(target)

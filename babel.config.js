@@ -6,8 +6,11 @@ module.exports = (api) => {
         "@babel/preset-env",
         {
           useBuiltIns: false,
-          // corejs: '3',
-          "modules": "commonjs"
+          useBuiltIns: 'entry',
+          corejs: '3',
+          "modules": "commonjs",
+          loose: true
+          // debug: true
         },
       ],
       "@babel/preset-react"
