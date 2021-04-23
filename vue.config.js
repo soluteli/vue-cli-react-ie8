@@ -48,16 +48,19 @@ module.exports = {
 
     config.module.rules.delete('js')
       
-    config.module.rule('jsx')
+    const jsRule = config.module.rule('jsx')
       .test(/jsx?$/)
-      // .exclude.add(/core-js/)
-    config.module.rule('jsx')
-      .use('es3-loader')
+    
+
+    if (process.env.NODE_ENV === 'production') {
+      jsRule.use('es3-loader')
         .loader(require.resolve('es3ify-loader'))
-        .end()
+    }
+
+    jsRule
       .use('babel-loader')
         .loader(require.resolve('babel-loader'))
-   
+
     // config.plugin('debug')
     //   .use(path.resolve('./myWebpackDebugPlugin.js'))
 

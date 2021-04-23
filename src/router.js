@@ -2,13 +2,15 @@ import React from 'react'
 import {Router, Route, IndexRedirect} from 'react-router'
 import routerData from "../.tmp/routerData";
 
+
+
 const routes = routerData.map(item => {
   const { title, pages } = item
   
   const childRoutes = []
   const visitedNames = []
   pages.forEach(page => {
-    const {default: _d, ...demos} = page
+    const {default: _d, __esModule,...demos} = page
     const names = Object.keys(demos)
     names.forEach(n => {
       if (!visitedNames.includes(n)) {
@@ -27,6 +29,8 @@ const routes = routerData.map(item => {
     childRoutes
   }
 })
+
+console.log('routerData', routes)
 
 function APPRouter() {
   return (
