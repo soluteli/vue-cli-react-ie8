@@ -1,1 +1,1 @@
-react web 项目模板（基于 vue-cli）
+react 项目模板（基于 vue-cli）
