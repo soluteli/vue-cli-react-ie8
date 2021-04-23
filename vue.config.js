@@ -12,8 +12,8 @@ module.exports = {
     //     args[0].terserOptions.ie8 = true
     //     return args
     //   })
-    // config.entry('ie8-pollyfill')
-    //   .add(path.join(process.cwd(), 'src', 'react-ie8-pollyfill.js'));
+    // config.entry('webpack-pollyfill')
+    //   .add(path.join(process.cwd(), 'src', 'webpack-pollyfill.js'));
 
     // config.externals([
     //   {
@@ -24,6 +24,7 @@ module.exports = {
 
     
     config.optimization.minimizers.delete("terser");
+    config.optimization.runtimeChunk("single");
     config.optimization.delete("splitChunks");
     config.optimization
       .minimizer("uglifyJs")
@@ -71,7 +72,7 @@ module.exports = {
     
     // console.log("chainWebpack", JSON.stringify(config.toConfig(), null, 2));
 
-    /* config.optimization.splitChunks({
+    config.optimization.splitChunks({
       cacheGroups: {
         vendors: {
           name: `chunk-vendors`,
@@ -93,7 +94,7 @@ module.exports = {
         //   priority: 1
         // }
       }
-    }) */
+    })
 
     /* config.plugin('html')
       .tap(args => {
