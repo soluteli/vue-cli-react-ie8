@@ -21,3 +21,12 @@ presets: [  "@babel/preset-env",
 
 ## cachegorups 优先级
 见 vue.config
+
+
+## react-router 
+需要在以下文件包裹
+```
+<Route path="/">
+
+<Route>
+```

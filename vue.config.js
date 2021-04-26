@@ -25,7 +25,7 @@ module.exports = {
     
     config.optimization.minimizers.delete("terser");
     config.optimization.runtimeChunk("single");
-    config.optimization.delete("splitChunks");
+    // config.optimization.delete("splitChunks");
     config.optimization
       .minimizer("uglifyJs")
       .use(require.resolve("uglifyjs-webpack-plugin"), [
@@ -72,7 +72,7 @@ module.exports = {
     
     // console.log("chainWebpack", JSON.stringify(config.toConfig(), null, 2));
 
-    config.optimization.splitChunks({
+    /* config.optimization.splitChunks({
       cacheGroups: {
         vendors: {
           name: `chunk-vendors`,
@@ -94,7 +94,7 @@ module.exports = {
         //   priority: 1
         // }
       }
-    })
+    }) */
 
     /* config.plugin('html')
       .tap(args => {

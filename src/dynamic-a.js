@@ -1,16 +1,15 @@
 import React from 'react'
 
-export default class A extends React.Component {
+export default class DynamicA extends React.Component {
 
   componentDidMount() {
-    import('./c')
   }
   
 
   render() {
     return (
       <div>
-        a
+        i am dynamic a
       </div>
     )
   }
